@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
 
 
 	char *str = argv[1]; // used for taking our keyword from the first command line argument
+
 	if (argc < 2) { // if wgrep recieves no command line arguments, then
 			printf("wgrep: searchterm [file...]\n"); // nothing was found
 			exit(1); // exit unsuccessfully
@@ -23,8 +24,7 @@ int main(int argc, char *argv[])
 	// if the only two args are the prog name and a search term, then take input from stdin
 	if (argc == 2) {
 		while (fgets(temp, 120, stdin) != NULL) { /* fgets sets the char aray temp equal to the current line being read in the file,
-											   up to 120 char. per line, with a file poiner pointing to the current file
-											   thus, while the line is not null (file hasnt ended) the while loop continues */
+											   up to 120 char. per line, with the input, in this case, being taken from stdin */
 			
 			if ((strstr(temp, str)) != NULL) { // if there is a match of our keyword str within the current line of the file
 				printf("Wgrep has found a match on line: %d\n", line_ct); // the function found a match on line...
@@ -53,13 +53,11 @@ int main(int argc, char *argv[])
 			if ((strstr(temp, str)) != NULL) { // if there is a match of our keyword str within the current line of the file
 				printf("Wgrep has found a match on line: %d\n", line_ct); // the function found a match on line...
 				printf("\n%s\n", temp); // print the line where the match was found
-				
-				// exit(0) should be here, but it isnt because after the first file finds a match, there is already an exit operation which prevents the rest of the files
-				// from being read
+				}
+				line_ct++; // increment line count to go through every line
 			}
-			line_ct++; // increment line count to go through every line
+			
+			fclose(fp); // make sure to close the file just to be safe, even though it is closed when wgrep.c ends anyway
 		}
-		fclose(fp); // make sure to close the file just to be safe, even though it is closed when wgrep.c ends anyway
-	}
-
+		exit(0); // exits successfully after reading each file and possibly finding a match!
 }
