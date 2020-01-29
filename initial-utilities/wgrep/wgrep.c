@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 		fp = fopen(argv[i], "r"); // open each file that is declared by the user in the command line prompt, and make the file pointer point to it
 		if (fp == NULL) // if the file pointer is null, then
 		{
-			printf("wgrep: cannot open file\n", argv[i]); //formatted as a compiler error, letting the user know which file cannot be opened
+			printf("wgrep: cannot open file\n"); // letting the user know file cannot be opened
 			exit(1); // current file not found, return unsuccessfully
 			continue; // using continue to exit the loop when the condition is returned as false
 					//  as there may be more than one file, one of which could be valid
