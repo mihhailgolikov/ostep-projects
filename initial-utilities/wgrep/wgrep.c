@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
 
 	int i; // loop incrementing variable used for counting files
 	FILE *fp; // file pointer used for reading the files
@@ -27,7 +26,7 @@ int main(int argc, char *argv[])
 											   up to 120 char. per line, with the input, in this case, being taken from stdin */
 			
 			if ((strstr(temp, str)) != NULL) { // if there is a match of our keyword str within the current line of the file
-				printf("Wgrep has found a match on line: %d\n", line_ct); // the function found a match on line...
+				// printf("Wgrep has found a match on line: %d\n", line_ct); // the function found a match on line...
 				printf("\n%s\n", temp); // print the line where the match was found
 				
 				exit(0); // string found! using stdin, exits safely because no other "files" (stdins) to check
@@ -51,7 +50,7 @@ int main(int argc, char *argv[])
 											   thus, while the line is not null (file hasnt ended) the while loop continues */
 			
 			if ((strstr(temp, str)) != NULL) { // if there is a match of our keyword str within the current line of the file
-				printf("Wgrep has found a match on line: %d\n", line_ct); // the function found a match on line...
+				//printf("Wgrep has found a match on line: %d\n", line_ct); // the function found a match on line...
 				printf("\n%s\n", temp); // print the line where the match was found
 				}
 				line_ct++; // increment line count to go through every line
